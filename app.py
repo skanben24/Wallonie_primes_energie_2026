@@ -1,7 +1,11 @@
 # app.py - Calculateur primes Habitation Wallonie 2026 (résultats sans icônes + gains ultra mis en évidence)
 
 from flask import Flask, render_template_string, request
+from flask import send_from_directory
 
+@app.route('/ads.txt')
+def ads_txt():
+    return send_from_directory('static', 'ads.txt')
 app = Flask(__name__)
 
 # Fonctions de calcul (inchangées)
@@ -326,4 +330,5 @@ def home():
     return render_template_string(HTML_TEMPLATE, results=results)
 
 if __name__ == '__main__':
+
     app.run(debug=False)
